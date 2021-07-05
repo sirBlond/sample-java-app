@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        AppCenter.start(getApplication(), "e0bf60a5-cd97-4053-a7ac-33129eed4858", Analytics.class, Crashes.class);
+        AppCenter.start(getApplication(), "${AC_SECRET}", Analytics.class, Crashes.class);
     }
 
     @Override

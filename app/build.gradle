@@ -11,6 +11,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        manifestPlaceholders = [AC_SECRET:"e0bf60a5-cd97-4053-a7ac-33129eed4858"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
