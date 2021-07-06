@@ -35,7 +35,11 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        AppCenter.start(getApplication(), "${AC_SECRET}", Analytics.class, Crashes.class);
+        String secret = "${AC_SECRET}";
+        if(secret == null || secret.equals("") || secret.trim().equals(""))
+            throw new RuntimeException("App Center secret is missing");
+        else
+            AppCenter.start(getApplication(), "${AC_SECRET}", Analytics.class, Crashes.class);
     }
 
     @Override
