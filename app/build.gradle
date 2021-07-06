@@ -29,6 +29,8 @@ android {
     buildFeatures {
         viewBinding true
     }
+    ndkVersion '21.0.6113669'
+    buildToolsVersion '30.0.2'
 }
 
 dependencies {
@@ -38,11 +40,13 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'androidx.navigation:navigation-fragment:2.3.0'
     implementation 'androidx.navigation:navigation-ui:2.3.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation files(
+            'libs/appcenter-analytics-debug.aar',
+            'libs/appcenter-crashes-debug.aar',
+            'libs/appcenter-distribute-debug.aar'
+    )
 
-    def appCenterSdkVersion = '4.1.0'
-    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+//    def appCenterSdkVersion = '4.1.0'/
+//    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+//    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 }
