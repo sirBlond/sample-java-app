@@ -41,10 +41,10 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.3.0'
     implementation 'androidx.navigation:navigation-ui:2.3.0'
     implementation files(
-            '../libs/appcenter-4.2.0.aar',
-            '../libs/appcenter-analytics-debug.aar',
-            '../libs/appcenter-crashes-debug.aar',
-            '../libs/appcenter-distribute-debug.aar'
+            '../libs/appcenter.aar',
+            '../libs/appcenter-analytics.aar',
+            '../libs/appcenter-crashes.aar',
+            '../libs/appcenter-distribute.aar'
     )
 
 }
