@@ -35,7 +35,10 @@ public class SecondFragment extends Fragment {
             AppCenterSDK.trackEvent("Button Pressed", "Previous");
             NavHostFragment.findNavController(SecondFragment.this)
                     .navigate(R.id.action_SecondFragment_to_FirstFragment);
-//            }
+        });
+
+        binding.buttonUpdateCheck.setOnClickListener((View v) -> {
+            AppCenterSDK.checkUpdate();
         });
     }
 
