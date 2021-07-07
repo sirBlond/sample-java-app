@@ -24,7 +24,9 @@ public class AppCenterSDK {
                     Crashes.class,
                     Distribute.class
             );
+            Analytics.setEnabled(true);
             Crashes.setEnabled(true);
+            Distribute.setEnabled(true);
         }
     }
 
