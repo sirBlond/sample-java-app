@@ -16,6 +16,7 @@ import com.example.javaapp.databinding.ActivityMainBinding;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
+import com.microsoft.appcenter.distribute.Distribute;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         if(secret == null || secret.equals("") || secret.trim().equals(""))
             throw new RuntimeException("App Center secret is missing");
         else
-            AppCenter.start(getApplication(), "${AC_SECRET}", Analytics.class, Crashes.class);
+            AppCenter.start(getApplication(), "${AC_SECRET}", Analytics.class, Crashes.class, Distribute.class);
     }
 
     @Override
