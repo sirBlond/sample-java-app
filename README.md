@@ -9,5 +9,5 @@ This app relies on `AC_SECRET` manifest placeholder (holding your AppCenter Secr
 * - [x] Track sessions and custom actions
 * - [x] Track crashes
 * - [ ] Check for updates
-3. - [ ] use SDK from develop instead of prebuilt
+3. - [x] use SDK from develop instead of prebuilt
 4. - [ ] publish app on github with instructions
