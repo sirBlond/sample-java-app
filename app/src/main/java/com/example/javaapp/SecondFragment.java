@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.javaapp.databinding.FragmentSecondBinding;
+import com.example.javaapp.AppCenterSDK;
 
 public class SecondFragment extends Fragment {
 
@@ -17,7 +18,7 @@ public class SecondFragment extends Fragment {
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
 
@@ -28,13 +29,13 @@ public class SecondFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        AppCenterSDK.trackEvent("View Loaded", "First Fragment");
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
+        binding.buttonSecond.setOnClickListener((View v) -> {
+            AppCenterSDK.trackEvent("Button Pressed", "Previous");
+            NavHostFragment.findNavController(SecondFragment.this)
+                    .navigate(R.id.action_SecondFragment_to_FirstFragment);
+//            }
         });
     }
 

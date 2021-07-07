@@ -17,6 +17,7 @@ import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
 import com.microsoft.appcenter.distribute.Distribute;
+import com.example.javaapp.AppCenterSDK;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,11 +37,8 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        String secret = "${AC_SECRET}";
-        if(secret == null || secret.equals("") || secret.trim().equals(""))
-            throw new RuntimeException("App Center secret is missing");
-        else
-            AppCenter.start(getApplication(), "${AC_SECRET}", Analytics.class, Crashes.class, Distribute.class);
+        AppCenterSDK.start(getApplication());
+//        AppCenter.start(getApplication(), "${AC_SECRET}", Analytics.class, Crashes.class, Distribute.class);
     }
 
     @Override

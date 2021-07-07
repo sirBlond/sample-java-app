@@ -11,9 +11,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.javaapp.databinding.FragmentFirstBinding;
 import com.google.android.material.snackbar.Snackbar;
-import com.microsoft.appcenter.analytics.Analytics;
-
-import java.util.HashMap;
+import com.example.javaapp.AppCenterSDK;
 
 public class FirstFragment extends Fragment {
 
@@ -32,22 +30,22 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Analytics.trackEvent("App loaded");
+        AppCenterSDK.trackEvent("View Loaded", "First Fragment");
 
         binding.nextButton.setOnClickListener((View v) -> {
-            this.trackBtnPress("Next");
+            AppCenterSDK.trackEvent("Button Pressed", "Next");
             NavHostFragment.findNavController(FirstFragment.this)
                     .navigate(R.id.action_FirstFragment_to_SecondFragment);
         });
 
         binding.toastButton.setOnClickListener((View v) -> {
-            this.trackBtnPress("Toast");
+            AppCenterSDK.trackEvent("Button Pressed", "Toast");
             Snackbar.make(v, "Toast content", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         });
 
         binding.crashButton.setOnClickListener((View v) -> {
-            this.trackBtnPress("Crash");
+            AppCenterSDK.trackEvent("Button Pressed", "Crash");
             throw new RuntimeException("Crash triggered!");
         });
     }
@@ -56,12 +54,6 @@ public class FirstFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    protected void trackBtnPress(String title) {
-        HashMap<String, String> eventProps = new HashMap();
-        eventProps.put("Title", title);
-        Analytics.trackEvent("Button pressed", eventProps);
     }
 
 }
