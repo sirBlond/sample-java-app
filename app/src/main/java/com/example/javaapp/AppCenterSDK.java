@@ -3,7 +3,6 @@ package com.example.javaapp;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
-import com.microsoft.appcenter.crashes.model.TestCrashException;
 import com.microsoft.appcenter.distribute.Distribute;
 
 import java.util.HashMap;
@@ -17,6 +16,7 @@ public class AppCenterSDK {
             throw new RuntimeException("App Center secret is missing");
         }
         else {
+            Distribute.setListener(new SampleDistributeListener());
             AppCenter.start(
                     app,
                     "${AC_SECRET}",

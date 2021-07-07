@@ -28,18 +28,23 @@ public class SecondFragment extends Fragment {
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        AppCenterSDK.trackEvent("View Loaded", "First Fragment");
+        try {
+            super.onViewCreated(view, savedInstanceState);
+            AppCenterSDK.trackEvent("View Loaded", "First Fragment");
 
-        binding.buttonSecond.setOnClickListener((View v) -> {
-            AppCenterSDK.trackEvent("Button Pressed", "Previous");
-            NavHostFragment.findNavController(SecondFragment.this)
-                    .navigate(R.id.action_SecondFragment_to_FirstFragment);
-        });
+            binding.buttonSecond.setOnClickListener((View v) -> {
+                AppCenterSDK.trackEvent("Button Pressed", "Previous");
+                NavHostFragment.findNavController(SecondFragment.this)
+                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+            });
 
-        binding.buttonUpdateCheck.setOnClickListener((View v) -> {
-            AppCenterSDK.checkUpdate();
-        });
+            binding.buttonUpdateCheck.setOnClickListener((View v) -> {
+                AppCenterSDK.checkUpdate();
+            });
+        }
+        catch(Exception exception) {
+            AppCenterSDK.trackCrash(exception);
+        }
     }
 
     @Override

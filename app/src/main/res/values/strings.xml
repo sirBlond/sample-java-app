@@ -10,4 +10,5 @@
     <string name="toast">Toast</string>
     <string name="crash">Crash</string>
     <string name="update">Update Check</string>
+    <string name="no_updates_available">Up to date</string>
 </resources>

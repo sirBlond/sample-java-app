@@ -23,31 +23,36 @@ public class FirstFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+            binding = FragmentFirstBinding.inflate(inflater, container, false);
+            return binding.getRoot();
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        AppCenterSDK.trackEvent("View Loaded", "First Fragment");
+        try {
+            super.onViewCreated(view, savedInstanceState);
+            AppCenterSDK.trackEvent("View Loaded", "First Fragment");
 
-        binding.nextButton.setOnClickListener((View v) -> {
-            AppCenterSDK.trackEvent("Button Pressed", "Next");
-            NavHostFragment.findNavController(FirstFragment.this)
-                    .navigate(R.id.action_FirstFragment_to_SecondFragment);
-        });
+            binding.nextButton.setOnClickListener((View v) -> {
+                AppCenterSDK.trackEvent("Button Pressed", "Next");
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+            });
 
-        binding.toastButton.setOnClickListener((View v) -> {
-            AppCenterSDK.trackEvent("Button Pressed", "Toast");
-            Snackbar.make(v, "Toast content", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
-        });
+            binding.toastButton.setOnClickListener((View v) -> {
+                AppCenterSDK.trackEvent("Button Pressed", "Toast");
+                Snackbar.make(v, "Toast content", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            });
 
-        binding.crashButton.setOnClickListener((View v) -> {
-            AppCenterSDK.trackEvent("Button Pressed", "Crash");
-            throw new RuntimeException("Crash triggered!");
-        });
+            binding.crashButton.setOnClickListener((View v) -> {
+                AppCenterSDK.trackEvent("Button Pressed", "Crash");
+                throw new RuntimeException("Crash triggered!");
+            });
+        }
+        catch (Exception exception) {
+            AppCenterSDK.trackCrash(exception);
+        }
     }
 
     @Override
